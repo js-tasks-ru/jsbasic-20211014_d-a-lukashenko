@@ -22,5 +22,5 @@ export default [
     price: 6.5,
     image: 'chicken_loempias.png',
     id: 'chicken-springrolls'
-  }
+  },
 ];
