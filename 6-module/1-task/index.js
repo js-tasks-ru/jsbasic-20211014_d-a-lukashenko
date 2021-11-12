@@ -11,8 +11,8 @@ export default class UserTable {
       <td>${row.salary}</td>
       <td>${row.city}</td>
       <td><button>X</button></td>
-      </tr>`
-}   
+      </tr>`;
+    }   
     this.render();
 
     let buttons = this.elem.querySelectorAll('button');
@@ -38,12 +38,13 @@ export default class UserTable {
         ${this.trElem}
     </tbody>
   </table>
-`}
+`;
+  }
 
   onClick = (event) => {
     let trTarget = event.target.closest('tr');
     trTarget.remove();
 
-}
+  }
 }
 
