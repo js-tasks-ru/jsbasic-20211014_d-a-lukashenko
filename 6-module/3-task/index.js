@@ -82,8 +82,7 @@ export default class Carousel {
     carouselInner.style.transform = `translateX(-${slideWidth * this.slidesCount}px)`;
   };
   buttonClick = (event) => {
-    let slide = event.target.closest('[data-id]'); 
-    console.log(slide.dataset.id);   
+    let slide = event.target.closest('[data-id]');    
     let customEvent = new CustomEvent('product-add', {detail: slide.dataset.id, bubbles: true});
     this.elem.dispatchEvent(customEvent);   
     
