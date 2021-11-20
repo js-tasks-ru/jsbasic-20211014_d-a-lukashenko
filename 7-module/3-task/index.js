@@ -4,6 +4,7 @@ export default class StepSlider {
   constructor({ steps, value = 0 }) {
     this.steps = steps;
     this.value = value;
+    console.log(this.value);
     
     this.render();
 
@@ -39,7 +40,8 @@ export default class StepSlider {
         
     let left = event.clientX - this.elem.getBoundingClientRect().left; 
     
-    let leftRelative = left / this.elem.offsetWidth;
+    let slider = this.elem.querySelector('.slider');    
+    let leftRelative = left / slider.offsetWidth;
     
     let segments = this.steps - 1;
     
@@ -55,7 +57,28 @@ export default class StepSlider {
 
     let leftPercents = valuePercents; // Значение в процентах от 0 до 100
 
+    let slider_value = this.elem.querySelector('.slider__value');
+
+    slider_value.textContent = value;
+
     thumb.style.left = `${leftPercents}%`;
     progress.style.width = `${leftPercents}%`;
+
+    let active_remove = this.elem.querySelector('.slider__step-active');
+    active_remove.classList.toggle('slider__step-active');
+
+    let value_active = 0;
+        value_active = ++value;
+    let active_slider_add = this.elem.querySelector(`div.slider__steps > span:nth-child(${value_active})`);
+        active_slider_add.classList.toggle('slider__step-active');
+    
+
+    
+    
+
+    new CustomEvent('slider-change', { // имя события должно быть именно 'slider-change'
+      detail: this.value, // значение 0, 1, 2, 3, 4
+      bubbles: true // событие всплывает - это понадобится в дальнейшем
+    });
   }
 }
