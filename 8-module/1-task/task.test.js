@@ -1,7 +1,7 @@
 import CartIcon from './index.js';
 import createElement from '../../assets/lib/create-element.js';
 
-fdescribe('8-module-1-task', () => {
+describe('8-module-1-task', () => {
   let cartIcon;
 
   let cart;
