@@ -5,23 +5,12 @@ export default class ProductGrid {
   constructor(products) {
     this.products = products;
     this.filters = {};
-    
-    this.cardRender = '';
-
     this.render();
-
     let productsGridInner = this.elem.querySelector('.products-grid__inner');
-    
     this.products.forEach((product) => {
       this.card = new ProductCard(product);     
       productsGridInner.append(this.card.elem);
-
-    });
-
-    
-    
-
-    
+    });   
           
   }  
   
@@ -34,44 +23,32 @@ export default class ProductGrid {
     `);
   } 
 
-  updateFilter(filters) {    
-
-    this.filtersAll = Object.assign(this.filters, filters);
-    this.productsFilter = [];    
-    let productsGridInner = this.elem.querySelector('.products-grid__inner');    
+  updateFilter(filters) {   
+    this.filters = Object.assign(this.filters, filters);
+    this.productsFilter = [];   
+    let productsGridInner = this.elem.querySelector('.products-grid__inner');   
     productsGridInner.innerHTML = '';
-    
-
-    this.products.forEach((product) => {      
+    for (let product of this.products) {
       //noNuts filter
-      if (this.filtersAll.noNuts && !product.nuts) {        
-        this.productsFilter.push(product);       
-      }        
-      
-      //vegeterianOnly filter
-      else if (this.filtersAll.vegeterianOnly && product.vegeterian) {         
-        this.productsFilter.push(product);                 
-      }       
-      
-      //maxSpiciness filter
-      else if (this.filtersAll.maxSpiciness && product.spiciness <= this.filtersAll.maxSpiciness) {        
-        this.productsFilter.push(product);  
-      }    
-
-      //category filter
-      else if (this.filtersAll.category && (this.filtersAll.category == product.category)) {          
-        this.productsFilter.push(product);  
-      } 
-            
-      //without filters     
-      else if (!this.filtersAll.noNuts && !this.filtersAll.vegeterianOnly && !this.filtersAll.category && (!this.filtersAll.maxSpiciness || this.filtersAll.maxSpiciness === 4)) {    
-        this.productsFilter.push(product);             
+      if (this.filters.noNuts && product.nuts) {
+        continue;
       }
-    });
-     
-
+      //vegeterianOnly filter
+      if (this.filters.vegeterianOnly && !product.vegeterian) {
+        continue;
+      }
+      //maxSpiciness filter
+      if (this.filters.maxSpiciness !== undefined && product.spiciness > this.filters.maxSpiciness) {
+        continue;
+      }
+      //category filter
+      if (this.filters.category && product.category != this.filters.category) {
+        continue;
+      }
+      this.productsFilter.push(product);    
+    }
     this.productsFilter.forEach((product) => {
-      this.card = new ProductCard(product);     
+      this.card = new ProductCard(product);    
       productsGridInner.append(this.card.elem);
     });
 }
