@@ -1,7 +1,7 @@
 import ProductsGrid from './index.js';
 import products from './products.js';
 
-describe('8-module-2-task', () => {
+fdescribe('8-module-2-task', () => {
   let productsGrid;
 
   beforeEach(() => {
