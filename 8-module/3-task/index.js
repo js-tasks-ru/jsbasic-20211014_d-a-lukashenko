@@ -6,7 +6,6 @@ export default class Cart {
   }
 
   addProduct(product) {
-
     if (!product) {
       return;
     }
