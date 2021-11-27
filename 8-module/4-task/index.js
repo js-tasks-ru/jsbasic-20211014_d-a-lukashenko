@@ -126,10 +126,12 @@ export default class Cart {
     this.modal.setBody(this.modalBody);
 
     // when modal is closed, we forget about it, don't update it any more
+
     // this.modal.elem.addEventListener('modal-close', () => {
     //   this.modal = null;
     //   this.modalBody = null;
     // });
+
 
     this.modal.open();
   }
@@ -145,7 +147,7 @@ export default class Cart {
     }
   };
 
-  
+
   onProductUpdate({product, count}) {
     this.cartIcon.update(this);
 
@@ -204,4 +206,3 @@ export default class Cart {
     this.cartIcon.elem.onclick = () => this.renderModal();
   }
 }
-
