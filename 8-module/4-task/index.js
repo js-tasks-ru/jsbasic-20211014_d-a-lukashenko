@@ -198,10 +198,9 @@ export default class Cart {
         </p>
       </div>
       `;
-  };
+  }
 
   addEventListeners() {
     this.cartIcon.elem.onclick = () => this.renderModal();
   }
 }
-
