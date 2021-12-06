@@ -2,18 +2,19 @@ import createElement from '../../assets/lib/create-element.js';
 
 export default class StepSlider {
   constructor({ steps, value = 0 }) {
-    this.steps = steps;
-    this.segments = steps - 1;
-    this.render();
+    this.steps = steps;// number of steps
+    this.segments = steps - 1; // number of segments
 
-    this.addEventListeners();
+    this.render(); // render method
 
-    this.setValue(value);
+    this.addEventListeners();// addEventListeners method
+
+    this.setValue(value);// setValue method
   }
 
-  render() {
+  render () {
     this.elem = createElement(`
-      <div class="slider">
+    <div class="slider">
         <div class="slider__thumb">
           <span class="slider__value"></span>
         </div>
@@ -24,11 +25,11 @@ export default class StepSlider {
       </div>
     `);
   }
-
   setValue(value) {
+
     this.value = value;
 
-    let valuePercents = (value / this.segments) * 100;
+    let valuePercents = (this.value / this.segments) * 100;
 
     this.sub('thumb').style.left = `${valuePercents}%`;
     this.sub('progress').style.width = `${valuePercents}%`;
@@ -41,7 +42,7 @@ export default class StepSlider {
 
     this.sub('steps').children[this.value].classList.add('slider__step-active');
   }
-
+  
   addEventListeners() {
     this.elem.onclick = this.onClick;
   }
@@ -58,9 +59,11 @@ export default class StepSlider {
       })
     );
   }
-
   sub(ref) {
     return this.elem.querySelector(`.slider__${ref}`);
   }
-
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 8103305ef35356ad69d520bd76137c3c2dc1b323

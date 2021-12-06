@@ -2,7 +2,7 @@ export default class Cart {
   cartItems = []; // [product: {...}, count: N]
 
   constructor(cartIcon) {
-    this.cartIcon = cartIcon;
+    this.cartIcon = cartIcon;    
   }
 
   addProduct(product) {
@@ -23,7 +23,7 @@ export default class Cart {
     } else {
       cartItem.count++;
     }
-
+  
     this.onProductUpdate(cartItem);
   }
 
@@ -36,12 +36,6 @@ export default class Cart {
     }
 
     this.onProductUpdate(cartItem);
-  }
-
-  onProductUpdate() {
-    // реализуем в следующей задаче
-
-    this.cartIcon.update(this);
   }
 
   isEmpty() {
@@ -57,6 +51,12 @@ export default class Cart {
       (sum, item) => sum + item.product.price * item.count,
       0
     );
+  }
+
+  onProductUpdate(cartItem) {
+    // реализуем в следующей задаче
+
+    this.cartIcon.update(this);
   }
 }
 

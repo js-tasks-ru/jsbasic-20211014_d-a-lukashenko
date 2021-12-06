@@ -30,5 +30,6 @@ export default class ProductCard {
   onClick = (event) => {
     let customEvent = new CustomEvent('product-add', {detail: this.product.id, bubbles: true});
     this.elem.dispatchEvent(customEvent);    
+    
   }
 }

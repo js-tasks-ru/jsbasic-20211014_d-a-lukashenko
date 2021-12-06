@@ -126,10 +126,18 @@ export default class Cart {
     this.modal.setBody(this.modalBody);
 
     // when modal is closed, we forget about it, don't update it any more
-    this.modal.elem.addEventListener('modal-close', () => {
-      this.modal = null;
-      this.modalBody = null;
-    });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3b5f7def7eb8412e23b8dca47325450908765a29
+    // this.modal.elem.addEventListener('modal-close', () => {
+    //   this.modal = null;
+    //   this.modalBody = null;
+    // });
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3b5f7def7eb8412e23b8dca47325450908765a29
 
     this.modal.open();
   }
@@ -145,6 +153,11 @@ export default class Cart {
     }
   };
 
+<<<<<<< HEAD
+  
+=======
+
+>>>>>>> 3b5f7def7eb8412e23b8dca47325450908765a29
   onProductUpdate({product, count}) {
     this.cartIcon.update(this);
 
@@ -197,7 +210,7 @@ export default class Cart {
         </p>
       </div>
       `;
-  };
+  }
 
   addEventListeners() {
     this.cartIcon.elem.onclick = () => this.renderModal();
